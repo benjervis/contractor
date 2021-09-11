@@ -9,10 +9,7 @@ const tests: TestObject[] = [
       export type SampleString = string;
     `,
     output: `
-      import * as t from 'runtypes';
       export const SampleString = t.String;
-
-      export type SampleString = t.Static<typeof SampleString>
     `
   },
 ]
