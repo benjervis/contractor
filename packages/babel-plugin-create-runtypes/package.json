@@ -1,0 +1,7 @@
+{
+  "name": "@contractor/babel-plugin-create-runtypes",
+  "version": "0.0.1",
+  "main": "dist/contractor-babel-plugin-create-runtypes.cjs.js",
+  "author": "Ben",
+  "license": "MIT"
+}

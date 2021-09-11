@@ -1,0 +1,19 @@
+{
+  "name": "contractor",
+  "version": "0.0.1",
+  "main": "dist/contractor.cjs.js",
+  "module": "dist/contractor.esm.js",
+  "author": "Ben",
+  "license": "MIT",
+  "workspaces":[
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "preconstruct build"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-typescript": "^7.15.0",
+    "@preconstruct/cli": "^2.1.2"
+  }
+}
