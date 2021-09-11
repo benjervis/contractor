@@ -1,36 +1,20 @@
-import pluginTester, { TestObject } from 'babel-plugin-tester/pure';
+import dedent from 'dedent';
 
-import plugin from './';
+import { withRecast } from './';
 
-const tests: TestObject[] = [
-  {
-    title: 'Basic type with primitive',
-    code: `
+describe('createRuntypesPlugin', () => {
+  it('should handle primitive types and add runtypes import', () => {
+    const result = withRecast(dedent`
       export type SampleString = string;
-    `,
-    output: `
-      export const SampleString = t.String;
-    `,
-  },
-  {
-    title: 'Basic type with runtypes import',
-    code: `
-      export type SampleString = string;
-    `,
-    output: `
-      import * as t from 'runtypes';
-      
-      export const SampleString = t.String;
-    `,
-  },
-];
+      export type SampleNum = number;
+      export type SampleBool = boolean;
+    `);
 
-pluginTester({
-  pluginName: 'babel-plugin-create-runtypes',
-  plugin,
-  babelOptions: {
-    filename: 'test-file.tsx',
-    plugins: [['@babel/plugin-syntax-typescript']],
-  },
-  tests,
+    expect(result).toBe(dedent`
+      import * as t from "runtypes";
+      export const SampleString = t.String;
+      export const SampleNum = t.Number;
+      export const SampleBool = t.Boolean;
+    `);
+  });
 });
