@@ -1,0 +1,11 @@
+.idea/
+.vscode/
+node_modules
+dist
+CHANGELOG.md
+.yarn/
+README.md
+.yarnrc.yml
+.github/ISSUE_TEMPLATE
+.changeset
+.next
